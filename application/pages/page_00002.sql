@@ -1,0 +1,261 @@
+prompt --application/pages/page_00002
+begin
+--   Manifest
+--     PAGE: 00002
+--   Manifest End
+wwv_flow_api.component_begin (
+ p_version_yyyy_mm_dd=>'2020.03.31'
+,p_release=>'20.1.0.00.13'
+,p_default_workspace_id=>40171281895718717287
+,p_default_application_id=>68980
+,p_default_id_offset=>0
+,p_default_owner=>'ARNOB77APEX'
+);
+wwv_flow_api.create_page(
+ p_id=>2
+,p_user_interface_id=>wwv_flow_api.id(40182564615153254782)
+,p_name=>'Dashboard'
+,p_alias=>'DASHBOARD'
+,p_step_title=>'Dashboard'
+,p_autocomplete_on_off=>'OFF'
+,p_page_template_options=>'#DEFAULT#'
+,p_last_updated_by=>'ARNOB77S@GMAIL.COM'
+,p_last_upd_yyyymmddhh24miss=>'20200920172001'
+);
+wwv_flow_api.create_page_plug(
+ p_id=>wwv_flow_api.id(40182584317422254856)
+,p_plug_name=>'Employee Types'
+,p_region_template_options=>'#DEFAULT#:i-h320:t-Region--scrollBody'
+,p_plug_template=>wwv_flow_api.id(40182479921959254716)
+,p_plug_display_sequence=>10
+,p_plug_display_point=>'BODY'
+,p_plug_source_type=>'NATIVE_JET_CHART'
+);
+wwv_flow_api.create_jet_chart(
+ p_id=>wwv_flow_api.id(40182584730777254857)
+,p_region_id=>wwv_flow_api.id(40182584317422254856)
+,p_chart_type=>'pie'
+,p_animation_on_display=>'auto'
+,p_animation_on_data_change=>'auto'
+,p_hide_and_show_behavior=>'withRescale'
+,p_hover_behavior=>'dim'
+,p_stack=>'off'
+,p_stack_label=>'off'
+,p_connect_nulls=>'Y'
+,p_value_position=>'auto'
+,p_value_format_type=>'decimal'
+,p_value_decimal_places=>0
+,p_value_format_scaling=>'auto'
+,p_sorting=>'label-asc'
+,p_fill_multi_series_gaps=>true
+,p_tooltip_rendered=>'Y'
+,p_show_series_name=>true
+,p_show_group_name=>true
+,p_show_value=>true
+,p_show_label=>true
+,p_show_row=>true
+,p_show_start=>true
+,p_show_end=>true
+,p_show_progress=>true
+,p_show_baseline=>true
+,p_legend_rendered=>'off'
+,p_legend_position=>'auto'
+,p_overview_rendered=>'off'
+,p_horizontal_grid=>'auto'
+,p_vertical_grid=>'auto'
+,p_gauge_orientation=>'circular'
+,p_gauge_plot_area=>'on'
+,p_show_gauge_value=>true
+);
+wwv_flow_api.create_jet_chart_series(
+ p_id=>wwv_flow_api.id(40182585298748254857)
+,p_chart_id=>wwv_flow_api.id(40182584730777254857)
+,p_seq=>10
+,p_name=>'Series 1'
+,p_data_source_type=>'SQL'
+,p_data_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select EMPLOYEE_TYPE, count(*) value',
+'from EMPLOYEES',
+'group by EMPLOYEE_TYPE',
+'order by 2 desc'))
+,p_max_row_count=>20
+,p_series_type=>'pie'
+,p_items_value_column_name=>'VALUE'
+,p_items_label_column_name=>'EMPLOYEE_TYPE'
+,p_items_label_rendered=>true
+,p_items_label_position=>'auto'
+,p_items_label_display_as=>'LABEL'
+,p_threshold_display=>'onIndicator'
+);
+wwv_flow_api.create_page_plug(
+ p_id=>wwv_flow_api.id(40182585864468254859)
+,p_plug_name=>'Card Status'
+,p_region_template_options=>'#DEFAULT#:i-h320:t-Region--scrollBody'
+,p_plug_template=>wwv_flow_api.id(40182479921959254716)
+,p_plug_display_sequence=>20
+,p_plug_new_grid_row=>false
+,p_plug_display_point=>'BODY'
+,p_plug_source_type=>'NATIVE_JET_CHART'
+);
+wwv_flow_api.create_jet_chart(
+ p_id=>wwv_flow_api.id(40182586212689254859)
+,p_region_id=>wwv_flow_api.id(40182585864468254859)
+,p_chart_type=>'bar'
+,p_height=>'400'
+,p_animation_on_display=>'auto'
+,p_animation_on_data_change=>'auto'
+,p_orientation=>'vertical'
+,p_data_cursor=>'auto'
+,p_data_cursor_behavior=>'auto'
+,p_hover_behavior=>'dim'
+,p_stack=>'off'
+,p_connect_nulls=>'Y'
+,p_sorting=>'label-asc'
+,p_fill_multi_series_gaps=>true
+,p_zoom_and_scroll=>'off'
+,p_tooltip_rendered=>'Y'
+,p_show_series_name=>true
+,p_show_group_name=>true
+,p_show_value=>true
+,p_legend_rendered=>'off'
+);
+wwv_flow_api.create_jet_chart_series(
+ p_id=>wwv_flow_api.id(40182586704120254859)
+,p_chart_id=>wwv_flow_api.id(40182586212689254859)
+,p_seq=>10
+,p_name=>'Series 1'
+,p_data_source_type=>'SQL'
+,p_data_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select STATUS, count(*) value',
+'from TIMECARDS',
+'group by STATUS',
+'order by 2 desc'))
+,p_max_row_count=>20
+,p_items_value_column_name=>'VALUE'
+,p_items_label_column_name=>'STATUS'
+,p_assigned_to_y2=>'off'
+,p_items_label_rendered=>true
+,p_items_label_position=>'auto'
+);
+wwv_flow_api.create_jet_chart_axis(
+ p_id=>wwv_flow_api.id(40183646411271306501)
+,p_chart_id=>wwv_flow_api.id(40182586212689254859)
+,p_axis=>'x'
+,p_is_rendered=>'on'
+,p_format_scaling=>'auto'
+,p_scaling=>'linear'
+,p_baseline_scaling=>'zero'
+,p_major_tick_rendered=>'on'
+,p_minor_tick_rendered=>'off'
+,p_tick_label_rendered=>'on'
+,p_tick_label_rotation=>'auto'
+,p_tick_label_position=>'outside'
+);
+wwv_flow_api.create_jet_chart_axis(
+ p_id=>wwv_flow_api.id(40183646591389306502)
+,p_chart_id=>wwv_flow_api.id(40182586212689254859)
+,p_axis=>'y'
+,p_is_rendered=>'on'
+,p_format_type=>'decimal'
+,p_decimal_places=>0
+,p_format_scaling=>'none'
+,p_scaling=>'linear'
+,p_baseline_scaling=>'zero'
+,p_position=>'auto'
+,p_major_tick_rendered=>'on'
+,p_minor_tick_rendered=>'off'
+,p_tick_label_rendered=>'on'
+);
+wwv_flow_api.create_page_plug(
+ p_id=>wwv_flow_api.id(40182587367855254860)
+,p_plug_name=>'Time Card  By Week'
+,p_region_template_options=>'#DEFAULT#:i-h320:t-Region--scrollBody'
+,p_plug_template=>wwv_flow_api.id(40182479921959254716)
+,p_plug_display_sequence=>30
+,p_plug_display_point=>'BODY'
+,p_plug_source_type=>'NATIVE_JET_CHART'
+);
+wwv_flow_api.create_jet_chart(
+ p_id=>wwv_flow_api.id(40182587780429254860)
+,p_region_id=>wwv_flow_api.id(40182587367855254860)
+,p_chart_type=>'bar'
+,p_height=>'400'
+,p_animation_on_display=>'auto'
+,p_animation_on_data_change=>'auto'
+,p_orientation=>'vertical'
+,p_data_cursor=>'auto'
+,p_data_cursor_behavior=>'auto'
+,p_hover_behavior=>'dim'
+,p_stack=>'off'
+,p_connect_nulls=>'Y'
+,p_sorting=>'label-asc'
+,p_fill_multi_series_gaps=>true
+,p_zoom_and_scroll=>'off'
+,p_tooltip_rendered=>'Y'
+,p_show_series_name=>true
+,p_show_group_name=>true
+,p_show_value=>true
+,p_legend_rendered=>'off'
+);
+wwv_flow_api.create_jet_chart_series(
+ p_id=>wwv_flow_api.id(40182588299014254861)
+,p_chart_id=>wwv_flow_api.id(40182587780429254860)
+,p_seq=>10
+,p_name=>'Series 1'
+,p_data_source_type=>'SQL'
+,p_data_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select WEEK_OF, count(*) value',
+'from TIMECARDS',
+'group by WEEK_OF',
+'order by 2 desc'))
+,p_max_row_count=>20
+,p_items_value_column_name=>'VALUE'
+,p_items_label_column_name=>'WEEK_OF'
+,p_assigned_to_y2=>'off'
+,p_items_label_rendered=>true
+,p_items_label_position=>'auto'
+);
+wwv_flow_api.create_jet_chart_axis(
+ p_id=>wwv_flow_api.id(40183647077583306507)
+,p_chart_id=>wwv_flow_api.id(40182587780429254860)
+,p_axis=>'x'
+,p_is_rendered=>'on'
+,p_format_scaling=>'auto'
+,p_scaling=>'linear'
+,p_baseline_scaling=>'zero'
+,p_major_tick_rendered=>'on'
+,p_minor_tick_rendered=>'off'
+,p_tick_label_rendered=>'on'
+,p_tick_label_rotation=>'auto'
+,p_tick_label_position=>'outside'
+);
+wwv_flow_api.create_jet_chart_axis(
+ p_id=>wwv_flow_api.id(40183647154730306508)
+,p_chart_id=>wwv_flow_api.id(40182587780429254860)
+,p_axis=>'y'
+,p_is_rendered=>'on'
+,p_format_type=>'decimal'
+,p_decimal_places=>0
+,p_format_scaling=>'none'
+,p_scaling=>'linear'
+,p_baseline_scaling=>'zero'
+,p_position=>'auto'
+,p_major_tick_rendered=>'on'
+,p_minor_tick_rendered=>'off'
+,p_tick_label_rendered=>'on'
+);
+wwv_flow_api.create_page_plug(
+ p_id=>wwv_flow_api.id(40182590495403254863)
+,p_plug_name=>'Breadcrumb'
+,p_region_template_options=>'#DEFAULT#:t-BreadcrumbRegion--useBreadcrumbTitle'
+,p_component_template_options=>'#DEFAULT#'
+,p_plug_template=>wwv_flow_api.id(40182489301989254722)
+,p_plug_display_sequence=>20
+,p_plug_display_point=>'REGION_POSITION_01'
+,p_menu_id=>wwv_flow_api.id(40182325933166254674)
+,p_plug_source_type=>'NATIVE_BREADCRUMB'
+,p_menu_template_id=>wwv_flow_api.id(40182543568673254762)
+);
+wwv_flow_api.component_end;
+end;
+/
